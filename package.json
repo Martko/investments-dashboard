@@ -1,0 +1,38 @@
+{
+  "name": "investments-dashboard",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "api": "nodemon dist/api/index.js",
+    "build-ts": "tsc",
+    "watch-ts": "tsc -w",
+    "serve-debug": "nodemon --inspect -r esm -r dotenv/config dist/src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Martko/investments-dashboard.git"
+  },
+  "author": "Martin koidu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Martko/investments-dashboard/issues"
+  },
+  "homepage": "https://github.com/Martko/investments-dashboard#readme",
+  "dependencies": {
+    "dotenv": "^7.0.0",
+    "esm": "^3.2.22",
+    "knex": "^0.16.5",
+    "koa": "^2.7.0",
+    "koa-router": "^7.4.0",
+    "mysql": "^2.17.1"
+  },
+  "devDependencies": {
+    "@types/koa": "^2.0.48",
+    "@types/koa-router": "^7.0.40",
+    "@types/node": "^11.13.6",
+    "nodemon": "^1.18.11",
+    "typescript": "^3.4.4"
+  }
+}
