@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "api": "nodemon dist/api/index.js",
+    "api": "node -r esm -r dotenv/config dist/src/index.js",
     "build-ts": "tsc",
     "watch-ts": "tsc -w",
     "serve-debug": "nodemon --inspect -r esm -r dotenv/config dist/src/index.js"
