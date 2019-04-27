@@ -1,6 +1,7 @@
 const knex = require('knex');
+import * as Knex from 'knex';
 
-const db = knex({
+const db: Knex = knex({
 	client: 'mysql',
 	connection: {
 		host: process.env.DB_HOST,
