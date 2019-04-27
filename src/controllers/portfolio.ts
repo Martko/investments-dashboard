@@ -8,8 +8,7 @@ export default async function(ctx: Koa.Context) {
 			await db
 				.select('source as name', 'value')
 				.from('portfolio_values')
-				.orderBy('id', 'desc')
-				.limit(5),
+				.orderBy('date', 'desc'),
 			'name'
 		)
 	);
