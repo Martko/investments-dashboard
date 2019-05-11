@@ -19,8 +19,8 @@ echo "======== DEPLOYMENT PACKAGE TRANSFER TO LIVE COMPLETE ========"
 echo "======== INSTALLING DEPLOYMENT IN LIVE ========"
 DEPLOYMENT_NAME="${CI_BUILD_NUMBER}_`date +\%d-\%m-\%Y_\%H-\%M-\%S`"
 ssh -i /home/rof/.ssh/id_rsa $LIVE_SERVER_USER@$LIVE_SERVER_HOST "
-mkdir -p ~/deployments/$CI_REPO_NAME/$DEPLOYMENT_NAME &&
-tar xzf $RELEASE_FILE_NAME -C ~/deployments/$CI_REPO_NAME/$DEPLOYMENT_NAME &&
+mkdir -p ~/deployments/investments-dashboard/$DEPLOYMENT_NAME &&
+tar xzf $RELEASE_FILE_NAME -C ~/deployments/investments-dashboard/$DEPLOYMENT_NAME &&
 ln -sfn ~/deployments/$CI_REPO_NAME/$DEPLOYMENT_NAME ~/latest/$CI_REPO_NAME &&
 rm $RELEASE_FILE_NAME &&
 exit"
