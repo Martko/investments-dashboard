@@ -23,6 +23,7 @@ mkdir -p ~/deployments/$PROJECT_NAME/$DEPLOYMENT_NAME &&
 tar xzf $RELEASE_FILE_NAME -C ~/deployments/$PROJECT_NAME/$DEPLOYMENT_NAME &&
 ln -s ~/configs/$PROJECT_NAME/.env ~/deployments/$PROJECT_NAME/$DEPLOYMENT_NAME/.env &&
 ln -sfn ~/deployments/$PROJECT_NAME/$DEPLOYMENT_NAME ~/latest/$PROJECT_NAME &&
+./start-$PROJECT_NAME.sh &&
 rm $RELEASE_FILE_NAME &&
 exit"
 
