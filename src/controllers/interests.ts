@@ -5,6 +5,8 @@ import * as Knex from 'knex';
 export default async function(ctx: Koa.Context) {
 	const type = ctx.query.type || 'daily_interests';
 	const year = ctx.query.year;
+	const start = ctx.query.start || undefined;
+	const end = ctx.query.end || undefined;
 	const groupBy = ctx.query.groupBy;
 
 	await db
@@ -16,11 +18,20 @@ export default async function(ctx: Koa.Context) {
 				queryBuilder
 					.select(
 						db.raw(
-							'DAY(date) as day, sum(total) as total, sum(loss) as loss, sum(net) as net'
+							[
+								'DAY(date) as day',
+								'MONTH(date) as month',
+								'sum(total) as total',
+								'sum(loss) as loss',
+								'sum(net) as net',
+							].join(',')
 						)
 					)
 					.whereRaw(`YEAR(date) = ${parseInt(year)}`)
-					.groupBy('day');
+					.groupBy(['day', 'month']);
+			}
+			if (start && type == 'daily_interests') {
+				queryBuilder.whereRaw('date >= ?', [start]);
 			}
 
 			if (groupBy) {
