@@ -14,7 +14,7 @@ export default async function(ctx: Koa.Context) {
 		.modify((queryBuilder: Knex.QueryBuilder) => {
 			if (year && type !== 'daily_interests') {
 				queryBuilder.where('year', year);
-			} else if (year && type == 'daily_interests') {
+			} else if (type == 'daily_interests') {
 				queryBuilder
 					.select(
 						db.raw(
@@ -27,11 +27,12 @@ export default async function(ctx: Koa.Context) {
 							].join(',')
 						)
 					)
-					.whereRaw(`YEAR(date) = ${parseInt(year)}`)
-					.groupBy(['day', 'month']);
-			}
-			if (start && type == 'daily_interests') {
-				queryBuilder.whereRaw('date >= ?', [start]);
+				if (year) {
+					queryBuilder.whereRaw(`YEAR(date) = ${parseInt(year)}`);
+				} else if (start) {
+					queryBuilder.whereRaw('date >= ?', [start]);
+				}
+				queryBuilder.groupBy(['day', 'month']);
 			}
 
 			if (groupBy) {
