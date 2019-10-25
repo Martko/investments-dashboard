@@ -15,18 +15,17 @@ export default async function(ctx: Koa.Context) {
 			if (year && type !== 'daily_interests') {
 				queryBuilder.where('year', year);
 			} else if (type == 'daily_interests') {
-				queryBuilder
-					.select(
-						db.raw(
-							[
-								'DAY(date) as day',
-								'MONTH(date) as month',
-								'sum(total) as total',
-								'sum(loss) as loss',
-								'sum(net) as net',
-							].join(',')
-						)
+				queryBuilder.select(
+					db.raw(
+						[
+							'DAY(date) as day',
+							'MONTH(date) as month',
+							'sum(total) as total',
+							'sum(loss) as loss',
+							'sum(net) as net',
+						].join(',')
 					)
+				);
 				if (year) {
 					queryBuilder.whereRaw(`YEAR(date) = ${parseInt(year)}`);
 				} else if (start) {
