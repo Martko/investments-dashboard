@@ -19,6 +19,11 @@
   "bugs": {
     "url": "https://github.com/Martko/investments-dashboard/issues"
   },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 4,
+    "singleQuote": true
+  },
   "homepage": "https://github.com/Martko/investments-dashboard#readme",
   "dependencies": {
     "@koa/cors": "^2.2.3",

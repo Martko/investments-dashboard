@@ -4,7 +4,7 @@ service provides an API for `investments-dashboard-client`.
 
 ## Stack
 
-- Node.js
+- Node.js ([Koa](https://koajs.com/))
 - TypeScript
 - MySQL
 
