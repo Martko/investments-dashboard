@@ -2,11 +2,12 @@ const Koa = require('koa');
 const Router = require('koa-router');
 const cors = require('@koa/cors');
 
-import { portfolio, passiveIncome, interests, cash, rent, loans } from './controllers';
+import { portfolio, passiveIncome, interests, cash, rent, loans, settings } from './controllers';
 
 const api = new Koa();
 const router = new Router();
 
+router.get('/api/settings', settings);
 router.get('/api/portfolio-value', portfolio);
 router.get('/api/passive-income', passiveIncome);
 router.get('/api/interests', interests);
